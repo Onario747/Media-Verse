@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowDropdownCircle, IoIosSearch } from "react-icons/io";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const NavDropdown = () => {
   const [toggleDropDown, setToggleDropDown] = useState(false);
@@ -27,7 +27,7 @@ const NavDropdown = () => {
   }, []);
 
   return (
-    <div className="flex items-center gap-8 font-medium">
+    <div className="font-medium">
       <div ref={dropDownRef}>
         <Link
           href="/"
@@ -56,7 +56,6 @@ const NavDropdown = () => {
           </Link>
         </div>
       )}
-      <IoIosSearch className="text-[2.1rem] text-white bg-red-600 rounded-full p-1 cursor-pointer" />
     </div>
   );
 };

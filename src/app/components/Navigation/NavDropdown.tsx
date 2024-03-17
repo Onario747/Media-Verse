@@ -39,7 +39,7 @@ const NavDropdown = () => {
         </Link>
       </div>
       {toggleDropDown && (
-        <div className="bg-blue-500 rounded absolute top-[5.5rem] flex flex-col text-white divide-y">
+        <div className="bg-blue-500 rounded sm:absolute sm:top-[5.5rem] relative top-[0.5rem] flex flex-col text-white divide-y">
           <Link
             href="/"
             className="pl-2 pr-5 py-2"

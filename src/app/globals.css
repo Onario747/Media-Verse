@@ -10,6 +10,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: "Inter", sans-serif;
 }
@@ -41,7 +42,7 @@ body {
   .bar {
     width: 30px;
     height: 2px;
-    background-color: rgba(0, 0, 0, 0.623);
+    background-color: #fff;
     margin: 2.5px 0;
     transition: transform 0.4s ease;
   }
@@ -63,6 +64,50 @@ body {
     padding: 10px 0;
     z-index: 1000;
     transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  .banner-overlay {
+    position: relative;
+  }
+
+  .banner-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.534) 0%,
+      rgba(0, 0, 0, 0.61) 100%
+    );
+    width: 100%;
+    height: 100%;
+  }
+  .poster-image {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 400px;
+    height: 600px;
+    border-radius: 30px;
+  }
+  .blur-nav {
+    backdrop-filter: blur(10px);
+  }
+  .glow-button {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 2px 5px 20px rgba(22, 80, 206, 0.4);
+    backdrop-filter: blur(8px);
+    transition: all .3s ease;
+  }
+  .glow-button:hover {
+    background-color: #fff;
+    color: red;
+  }
+  .glow-button-trailer {
+    box-shadow: 0px 0px 7px 8px rgba(224, 6, 6, 0.4);
+    transition: box-shadow 0.3s ease;
+  }
+  .glow-button-trailer:hover {
+    box-shadow: 0px 0px 7px 10px rgba(224, 6, 6, 0.4);
   }
 }
 

@@ -1,7 +1,7 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import "./globals.css";
 import Navigation from "./components/Navigation/Navigation";
-
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Media Verse",
@@ -19,6 +19,7 @@ export default function RootLayout({
         <main>
           <Navigation />
           {children}
+          <Analytics />
         </main>
       </body>
     </html>

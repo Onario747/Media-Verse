@@ -18,7 +18,7 @@ import StarRatings from "./StarRatings";
 
 const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
   return (
-    <div className="h-full w-full relative">
+    <div className="h-full w-full relative select-none">
       <Swiper
         modules={[Autoplay]}
         grabCursor={true}

@@ -43,7 +43,7 @@ const Navigation = () => {
 
   return (
     <header
-      className={`padding-x py-4 w-full fixed top-0 z-10 transition-all ${
+      className={`padding-x py-4 w-full fixed top-0 z-10 transition-all select-none ${
         isblurred ? "blur-nav" : ""
       }  ${toggleHamburger ? "bg-white p-0" : ""} `}
     >

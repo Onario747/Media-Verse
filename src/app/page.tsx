@@ -2,7 +2,7 @@ import Hero from "./sections/Hero";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="select-none">
       <Hero />
     </main>
   );

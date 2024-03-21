@@ -45,7 +45,7 @@ const Navigation = () => {
     <header
       className={`padding-x py-4 w-full fixed top-0 z-10 transition-all ${
         isblurred ? "blur-nav" : ""
-      } `}
+      }  ${toggleHamburger ? "bg-white p-0" : ""} `}
     >
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center max-container justify-between font-montserrat">
@@ -71,7 +71,9 @@ const Navigation = () => {
         </div>
       </nav>
       {/* Mobile Navigation */}
-      <nav className="md:hidden flex items-center max-container justify-between font-montserrat">
+      <nav
+        className={`md:hidden flex items-center max-container justify-between font-montserrat`}
+      >
         <Link href="/">
           <Image
             src="/images/logo.png"
@@ -89,7 +91,7 @@ const Navigation = () => {
         </div>
         {toggleHamburger && (
           <>
-            <div className="flex flex-col items-start gap-5 font-bold mobile-nav bg-slate-100 h-screen padding-x">
+            <div className="flex flex-col items-start gap-5 font-bold mobile-nav bg-white padding-x">
               <div className="flex flex-col items-start w-full">
                 {navLinks.map((link) => (
                   <Link

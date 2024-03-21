@@ -43,10 +43,16 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                         alt="movie poster"
                         width={400}
                         height={600}
-                        className="poster-image  max-lg:hidden"
+                        className={`poster-image max-lg:hidden ${
+                          isActive ? "scale-up" : ""
+                        }`}
                       />
                       <div className="flex flex-col gap-4 max-sm:gap-2">
-                        <div className="flex gap-5">
+                        <div
+                          className={`poster-fade flex gap-5 ${
+                            isActive ? "poster-fade-animate" : ""
+                          }`}
+                        >
                           <p className="text-blue-400 font-montserrat font-semibold">
                             {poster.release_date}
                           </p>
@@ -54,20 +60,34 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                             {poster.original_language}
                           </p>
                         </div>
-                        <h1 className="text-white font-poppins font-bold text-[5rem] w-full max-lg:text-[3rem] max-md:text-[2rem] m-0 leading-none">
+                        <h1
+                          className={`hero-title w-full max-lg:text-[3rem] max-md:text-[2rem] m-0 leading-none ${
+                            isActive ? "text-animate" : ""
+                          }`}
+                        >
                           {poster.title}
                         </h1>
-                        <StarRatings rating={poster.vote_average} />
-                        <Genre genreId={poster.genre_ids} />
+                        <div
+                          className={`poster-fade ${
+                            isActive ? "poster-fade-animate" : ""
+                          }`}
+                        >
+                          <StarRatings rating={poster.vote_average} />
+                          <Genre genreId={poster.genre_ids} />
+                        </div>
                         <p
-                          className="text-white font-poppins text-[1.1rem] max-md:text-[1rem] max-sm:text-[0.8rem] font-medium
-                        "
+                          className={`overview max-md:text-[1rem] max-sm:text-[0.7rem] font-medium
+                        ${isActive ? "text-animate" : ""}`}
                         >
                           {poster.overview}
                         </p>
-                        <div className="flex gap-4 mt-[3rem] max-md:mt-5">
+                        <div
+                          className={`hero-button max-md:mt-5 ${
+                            isActive ? "text-animate" : ""
+                          }`}
+                        >
                           <Link href="/">
-                            <button className="glow-button-trailer bg-red-600 text-white font-bold font-montserrat max-sm:text-[15px] p-4 max-md:p-3 rounded-full flex items-center gap-2 max-md:gap-1">
+                            <button className="glow-button-trailer bg-red-600 text-white font-bold font-montserrat max-sm:text-[13px] p-4 max-md:p-3 rounded-full flex items-center gap-2 max-md:gap-1">
                               <Image
                                 src="/icons/play.svg"
                                 alt="play"
@@ -78,7 +98,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                             </button>
                           </Link>
                           <Link href="/">
-                            <button className="glow-button text-white max-sm:text-[15px] font-bold font-montserrat p-4 max-md:p-3 rounded-full flex items-center gap-2">
+                            <button className="glow-button text-white max-sm:text-[13px] font-bold font-montserrat p-4 max-md:p-3 rounded-full flex items-center gap-2">
                               <MdMoreHoriz className="text-[20px]" />
                               Read More
                             </button>

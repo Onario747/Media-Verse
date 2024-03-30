@@ -6,5 +6,5 @@ export type MovieApiResults = {
   overview: string;
   original_language: string;
   vote_average: number;
-  genre_ids: number[]
+  genre_ids: number[];
 };

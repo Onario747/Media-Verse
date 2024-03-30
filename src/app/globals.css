@@ -82,6 +82,20 @@ body {
     width: 100%;
     height: 100%;
   }
+  .banner-overlay::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    -webkit-tap-highlight-color: #fff;
+    background: linear-gradient(
+      to top,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
   .poster-image {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 400px;
@@ -127,7 +141,7 @@ body {
   }
   .poster-fade {
     opacity: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: opacity 0.5s ease;
     transition-delay: 0.3s, 0.3s;
   }
   .poster-fade-animate {

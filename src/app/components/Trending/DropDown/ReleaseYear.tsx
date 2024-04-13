@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useId } from "react";
 import CreatableSelect from "react-select/creatable";
 import { releaseYears } from "../../../../../data";
 
-const ReleaseYear = () => {
-  const [selectedOption, setSelectedOption] = useState();
+type prop = {
+  setSelectedYear: (value: any) => void;
+};
 
+const ReleaseYear = ({ setSelectedYear }: prop) => {
   const handleChange = (option: any) => {
     if (option && option.label) {
-      setSelectedOption(option.label);
+      setSelectedYear(option.label);
+    } else {
+      setSelectedYear("");
     }
   };
-
-  useEffect(() => {
-    console.log("ReleaseYear", selectedOption);
-  }, [selectedOption]);
 
   const selectStyles = {
     control: (styles: any) => ({
@@ -42,6 +42,9 @@ const ReleaseYear = () => {
         onChange={handleChange}
         placeholder="Release Year"
         styles={selectStyles}
+        instanceId={useId()}
+        className="react-select-container"
+        classNamePrefix="react-select"
       />
     </div>
   );

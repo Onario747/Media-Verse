@@ -1,4 +1,3 @@
-import { MdStar } from "react-icons/md";
 
 export const categoriesGenre = [
   { value: 28, label: "Action" },
@@ -33,9 +32,36 @@ export const releaseYears = [
 ];
 
 export const voteCount = [
-  { value: "1/5", label: "1.0" },
-  { value: "2/5", label: "2.0" },
-  { value: "3/5", label: "3.0" },
-  { value: "4/5", label: "4.0" },
-  { value: "5/5", label: "5.0" },
+  { value: "1/7", label: "1.0" },
+  { value: "2/7", label: "2.0" },
+  { value: "3/7", label: "3.0" },
+  { value: "4/7", label: "4.0" },
+  { value: "5/7", label: "5.0" },
+  { value: "6/6", label: "6.0" },
+  { value: "7/7", label: "7.0" },
 ];
+
+export const TrendingMobileDropDownData = [
+  {
+    id: "category",
+    name: "Category",
+    options: categoriesGenre.map((item) => ({
+      labelName: item.label,
+      labelId: item.value,
+    })),
+  },
+];
+// export const TrendingMobileDropDownData = [
+//   {
+//     id: "category",
+//     name: "Category",
+//     options: [
+//       {
+//         id: categoriesGenre.map((id) => id.label),
+//         value: categoriesGenre.map((item) => item.value),
+//       },
+//     ],
+//   },
+// ];
+
+// console.log(TrendingMobileDropDownData);

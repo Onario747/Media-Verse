@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import brokenImage from '/images/Broken Image Link.png'
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,34 @@ import Genre from "./Genre";
 import StarRatings from "./StarRatings";
 
 const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
+  const extractYearFromDate = (dateString: any) => {
+    if (dateString) {
+      const date = new Date(dateString);
+      return date.getFullYear();
+    } else {
+      return "N/A";
+    }
+  };
+
+  const shimmer = (w: number, h: number) => `
+  <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient id="g">
+        <stop stop-color="#333" offset="20%" />
+        <stop stop-color="#222" offset="50%" />
+        <stop stop-color="#333" offset="70%" />
+      </linearGradient>
+    </defs>
+    <rect width="${w}" height="${h}" fill="#333" />
+    <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+    <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+  </svg>`;
+
+  const toBase64 = (str: string) =>
+    typeof window === "undefined"
+      ? Buffer.from(str).toString("base64")
+      : window.btoa(str);
+
   return (
     <div className="h-full w-full relative select-none">
       <Swiper
@@ -29,14 +58,18 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
           <SwiperSlide key={index}>
             {({ isActive }) => (
               <div
-                className={`bg-cover bg-center bg-no-repeat banner-overlay`}
+                className={`banner-overlay`}
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster.backdrop_path})`,
                 }}
               >
-                <div className="w-full relative padding-x max-container py-[9rem]">
+                <div className="w-full relative padding-x max-container py-[9rem] max-lg:pb-[4rem]">
                   <div className="flex gap-[5rem] w-full">
                     <Image
+                      priority={true}
+                      placeholder={`data:image/svg+xml;base64,${toBase64(
+                        shimmer(600, 400)
+                      )}`}
                       src={`https://image.tmdb.org/t/p/w500/${poster.poster_path}`}
                       alt="movie poster"
                       width={400}
@@ -52,7 +85,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                         }`}
                       >
                         <p className="text-blue-400 font-montserrat font-semibold">
-                          {poster.release_date}
+                          {extractYearFromDate(poster.release_date)}
                         </p>
                         <p className="uppercase font-montserrat font-semibold text-red-500">
                           {poster.original_language}
@@ -70,7 +103,10 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                           isActive ? "poster-fade-animate" : ""
                         }`}
                       >
-                        <StarRatings rating={poster.vote_average} />
+                        <StarRatings
+                          rating={poster.vote_average}
+                          borderColor="white"
+                        />
                         <Genre genreId={poster.genre_ids} />
                       </div>
                       <p

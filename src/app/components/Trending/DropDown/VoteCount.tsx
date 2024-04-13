@@ -1,21 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useId } from "react";
 import Select from "react-select";
 import { voteCount } from "../../../../../data";
 
-const VoteCount = () => {
-  const [selectedOption, setSelectedOption] = useState();
+type prop = {
+  setSelectedVote: (value: any) => void;
+};
 
+const VoteCount = ({ setSelectedVote }: prop) => {
   const handleChange = (option: any) => {
     if (option && option.label) {
-      setSelectedOption(option.label);
+      setSelectedVote(option.label);
     }
   };
-
-  useEffect(() => {
-    console.log("Vote Count", selectedOption);
-  }, [selectedOption]);
 
   const selectStyles = {
     control: (styles: any) => ({
@@ -41,6 +39,9 @@ const VoteCount = () => {
         placeholder="Vote count"
         onChange={handleChange}
         styles={selectStyles}
+        instanceId={useId()}
+        className="react-select-container"
+        classNamePrefix="react-select"
       />
     </div>
   );

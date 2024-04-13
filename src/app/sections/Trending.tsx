@@ -2,33 +2,43 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BsFillGridFill } from "react-icons/bs";
-import { FaArrowTrendUp } from "react-icons/fa6";
-import { ImMenu } from "react-icons/im";
+import { LuArrowUpRight } from "react-icons/lu";
+import { MovieApiResults } from "../../../types";
 import Categories from "../components/Trending/DropDown/Categories";
 import ReleaseYear from "../components/Trending/DropDown/ReleaseYear";
 import VoteCount from "../components/Trending/DropDown/VoteCount";
 import MovieList from "../components/Trending/MovieList";
 import SearchBar from "../components/Trending/SearchBar";
-import { MovieApiResults } from "../../../types";
+import SwipeMovieList from "../components/Trending/SwipeMovieList";
+
+import { LuSettings2 } from "react-icons/lu";
+import CoverFlowMovieList from "../components/Trending/CoverFlowMovieList";
+import SelectedDiscover from "../components/Trending/SelectedDiscover";
+import MobileDropdown from "../components/Trending/MobileDropdown";
 
 const Trending = () => {
   const [movieList, setMovieList] = useState<MovieApiResults[]>([]);
+  const [toggleGenreMenu, setToggleGenreMenu] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(Number);
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedVote, setSelectedVote] = useState("");
+  const [selectedDiscover, setSelectedDiscover] = useState("movie");
+  const [isLoading, setIsLoading] = useState(false);
 
-  
   useEffect(() => {
     const options = {
       method: "GET",
-      url: "https://api.themoviedb.org/3/discover/movie",
+      url: `https://api.themoviedb.org/3/discover/${selectedDiscover}`,
       params: {
         include_adult: "false",
         include_video: "false",
         language: "en-US",
         page: "1",
         sort_by: "popularity.desc",
-        with_genres: "",
-        year: "",
+        with_genres: selectedCategory ? selectedCategory : "",
+        year: selectedYear ? selectedYear : "",
+        first_air_date_year: selectedYear ? selectedYear : "",
+        "vote_average.lte": selectedVote ? selectedVote : "",
       },
       headers: {
         accept: "application/json",
@@ -38,6 +48,7 @@ const Trending = () => {
     };
 
     const fetchTrending = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.request(options);
         const modifiedResults = response.data.results.splice(
@@ -45,43 +56,74 @@ const Trending = () => {
           10
         );
         setMovieList(modifiedResults);
+        // setIsLoading(false);
       } catch (error) {
         console.error("Error fetching Trending:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchTrending();
-  }, []);
+  }, [selectedCategory, selectedYear, selectedVote, selectedDiscover]);
   return (
-    <div className="padding-x max-container py-[2rem]">
-      <div className="z-10 flex items-end justify-between border-b-2 border-red-400 pb-4">
+    <div className="padding-x max-container max-lg:px-0 py-[1rem] relative">
+      <div className="z-10 flex items-end justify-between pb-4 max-lg:mx-[3rem] max-sm:mx-[1.5rem] border-b-2 border-red-400">
         <div>
-          {/* <span className="font-montserrat font-medium text-red-400">
+          <span className="font-montserrat font-medium max-sm:text-[13px] text-red-400">
             Let&apos;s Explore
-          </span> */}
-          <h1 className="flex items-center gap-2 text-black font-poppins text-[3.5rem] leading-none font-bold">
+          </span>
+          <h1 className="flex items-center gap-2 text-black font-poppins text-[3.5rem] max-sm:text-[2rem] leading-none font-bold">
             Trending
-            <FaArrowTrendUp className="text-blue-600" />
+            <LuArrowUpRight className="text-blue-600" />
           </h1>
         </div>
-        <SearchBar />
+        <div className="max-[854px]:hidden">
+          <SearchBar />
+        </div>
+        {/* <div className="hidden text-[2.5rem] max-[854px]:flex">
+          <MdMenuOpen onClick={() => setToggleGenreMenu(!toggleGenreMenu)} />
+        </div> */}
       </div>
-      <div className="flex items-center justify-between p-[10px]">
-        <div className="flex items-center gap-[20px]">
+      {/* Toggle Mobile Menu for Mobile */}
+      {toggleGenreMenu && (
+        <div className="flex justify-end p-[10px] bg-cyan-500 absolute z-10 right-0 w-[50%] h-1/2">
+          <div className="flex">
+            <MobileDropdown />
+          </div>
+        </div>
+      )}
+      <div className="flex items-center justify-between max-[995px]:grid max-[995px]:grid-cols-1 max-[854px]:hidden gap-y-3 p-[10px]">
+        <div className="flex items-center gap-[20px] z-20">
           <Categories
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
-          <ReleaseYear />
-          <VoteCount />
+          <ReleaseYear setSelectedYear={setSelectedYear} />
+          <VoteCount setSelectedVote={setSelectedVote} />
         </div>
-        {/* <div className="flex items-center gap-2">
-          <ImMenu className="text-[28px] cursor-pointer" />
-          <BsFillGridFill className="text-[25px] cursor-pointer" />
-        </div> */}
+        <SelectedDiscover
+          selectedDiscover={selectedDiscover}
+          setSelectedDiscover={setSelectedDiscover}
+        />
+      </div>
+      <div className="hidden max-[854px]:flex flex-col gap-3 max-lg:px-[3rem] max-sm:px-[1.5rem]">
+        <SearchBar />
+        <div className="flex items-center justify-between flex-row-reverse">
+          <div className="flex items-center gap-2 border-2 border-black rounded-xl font-semibold font-montserrat text-white bg-blue-500 p-[6px]">
+            Filter
+            <LuSettings2 />
+          </div>
+          <SelectedDiscover
+            setSelectedDiscover={setSelectedDiscover}
+            selectedDiscover={selectedDiscover}
+          />
+        </div>
       </div>
       <div>
-        <MovieList movieList={movieList} />
+        <MovieList movieList={movieList} isLoading={isLoading} />
+        <SwipeMovieList movieList={movieList} isLoading={isLoading} />
+        <CoverFlowMovieList movieList={movieList} isLoading={isLoading} />
       </div>
     </div>
   );

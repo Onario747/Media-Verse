@@ -27,10 +27,11 @@ const Genre = ({ genreId }: prop) => {
   };
   return (
     <div className="flex gap-1 flex-wrap">
-      {genreId.map((genreId) => (
+      {genreId.map((genreId, index, array) => (
         <div key={genreId}>
           <div className="text-white flex items-center font-montserrat font-bold">
-            {genreMap[genreId] || "Unknown Genre"} <BsDot className="text-red-600" />
+            {genreMap[genreId] || "Unknown Genre"}
+            {index !== array.length - 1 && <BsDot className="text-red-600" />}
           </div>
         </div>
       ))}

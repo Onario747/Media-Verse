@@ -43,15 +43,15 @@ const Navigation = () => {
 
   return (
     <header
-      className={`padding-x py-4 w-full fixed top-0 z-10 transition-all select-none ${
+      className={`padding-x py-4 w-full fixed top-0 z-30 transition-all select-none ${
         isblurred ? "blur-nav" : ""
       }  ${toggleHamburger ? "bg-white p-0" : ""} `}
     >
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center max-container justify-between font-montserrat">
+      <nav className="hidden min-[834px]:flex items-center max-container justify-between font-montserrat">
         <Link href="/">
           <Image
-            src="/images/logo.png"
+            src={"/images/logo.png"}
             alt="Media-Verse logo"
             width={80}
             height={80}
@@ -72,7 +72,7 @@ const Navigation = () => {
       </nav>
       {/* Mobile Navigation */}
       <nav
-        className={`md:hidden flex items-center max-container justify-between font-montserrat`}
+        className={`min-[834px]:hidden flex items-center max-container justify-between font-montserrat`}
       >
         <Link href="/">
           <Image
@@ -80,7 +80,7 @@ const Navigation = () => {
             alt="Media-Verse logo"
             width={80}
             height={80}
-            className="w-[80px] h-[80px]"
+            className="-ml-3"
           />
         </Link>
         <div>
@@ -91,7 +91,7 @@ const Navigation = () => {
         </div>
         {toggleHamburger && (
           <>
-            <div className="flex flex-col items-start gap-5 font-bold mobile-nav bg-white padding-x">
+            <div className="flex flex-col items-start gap-5 font-bold mobile-nav bg-white shadow-xl padding-x">
               <div className="flex flex-col items-start w-full">
                 {navLinks.map((link) => (
                   <Link
@@ -103,7 +103,7 @@ const Navigation = () => {
                   </Link>
                 ))}
               </div>
-              <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
                 <NavDropdown />
                 <NavSearch />
               </div>

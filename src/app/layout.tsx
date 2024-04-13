@@ -5,7 +5,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Media Verse",
-  description: "Get Latest Info about your favorite Movie's and Tv-show's",
+  description:
+    "Find Organize, and keep track of your favorite movies and tv-shows collection.",
 };
 
 export default function RootLayout({
@@ -15,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
         <main>
           <Navigation />
           {children}

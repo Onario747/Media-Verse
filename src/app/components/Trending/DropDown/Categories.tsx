@@ -1,32 +1,33 @@
 "use client";
 
-import { SetStateAction, useEffect, useState } from "react";
+import { useId } from "react";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { categoriesGenre } from "../../../../../data";
 
 type props = {
   selectedCategory: number;
-  setSelectedCategory: (value: any) => void
+  setSelectedCategory: (value: any) => void;
 };
 
-const Categories = ({ selectedCategory, setSelectedCategory }: props) => {
+const Categories = ({ setSelectedCategory }: props) => {
   const animatedComponents = makeAnimated();
 
   const handleChange = (options: any) => {
-    options.map((item: { value: SetStateAction<undefined> }) =>
-      setSelectedCategory(item.value)
-    );
+    options.map((item: { value: any }) => {
+      if (item && item.value) {
+        setSelectedCategory(`${item.value} ,`);
+      } else {
+        setSelectedCategory("");
+      }
+    });
   };
-
-  useEffect(() => {
-    console.log("Categories", selectedCategory);
-  }, [selectedCategory]);
 
   const selectStyles = {
     control: (styles: any) => ({
       ...styles,
       border: "2px solid black",
+      color: "#000"
     }),
     multiValue: (styles: any) => {
       return {
@@ -46,23 +47,29 @@ const Categories = ({ selectedCategory, setSelectedCategory }: props) => {
         ...styles,
         color: "#fff",
         cursor: "pointer",
-        ": hover": {
-          color: "#fff",
-          background: "transparent",
-        },
+      };
+    },
+    base: (base: any) => {
+      return {
+        ...base,
+        height: 20,
+        minHeight: 20,
       };
     },
   };
   return (
-    <div className="max-w-[400px]">
+    <div className="max-w-[400px] z-20 max-[834px]:max-w-[250px]">
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
         options={categoriesGenre}
         isMulti
         onChange={handleChange}
+        instanceId={useId()}
         placeholder="All Categories"
         styles={selectStyles}
+        className="react-select-container"
+        classNamePrefix="react-select"
       />
     </div>
   );

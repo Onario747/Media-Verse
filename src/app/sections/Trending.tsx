@@ -2,7 +2,9 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { LuArrowUpRight } from "react-icons/lu";
+
 import { MovieApiResults } from "../../../types";
 import Categories from "../components/Trending/DropDown/Categories";
 import ReleaseYear from "../components/Trending/DropDown/ReleaseYear";
@@ -11,11 +13,12 @@ import MovieList from "../components/Trending/MovieList";
 import SearchBar from "../components/Trending/SearchBar";
 import SwipeMovieList from "../components/Trending/SwipeMovieList";
 
-import { LuSettings2 } from "react-icons/lu";
 import CoverFlowMovieList from "../components/Trending/CoverFlowMovieList";
-import MobileDropdown from "../components/Trending/MobileFilter.jsx";
+import {
+  default as MobileDropdown,
+  default as MobileFilter,
+} from "../components/Trending/MobileFilter.jsx";
 import SelectedDiscover from "../components/Trending/SelectedDiscover";
-import MobileFilter from "../components/Trending/MobileFilter.jsx";
 
 const Trending = () => {
   const [movieList, setMovieList] = useState<MovieApiResults[]>([]);
@@ -68,23 +71,24 @@ const Trending = () => {
     fetchTrending();
   }, [selectedCategory, selectedYear, selectedVote, selectedDiscover]);
   return (
-    <div className="padding-x max-container max-lg:px-0 py-[1rem] relative">
-      <div className="z-10 flex items-end justify-between pb-4 max-lg:mx-[3rem] max-sm:mx-[1.5rem] border-b-2 border-red-400">
+    <div className="padding-x max-container max-lg:px-0 pt-[1rem] relative">
+      <div className="z-10 flex items-center justify-between py-4 max-lg:mx-[3rem] max-sm:mx-[1.5rem] border-b-2 border-red-400">
         <div>
-          <span className="font-montserrat font-medium max-sm:text-[13px] text-red-400">
+          {/* <span className="font-montserrat font-medium max-sm:text-[13px] text-red-400">
             Let&apos;s Explore
-          </span>
+          </span> */}
           <h1 className="flex items-center gap-2 text-black font-poppins text-[3.5rem] max-sm:text-[2rem] leading-none font-bold">
             Trending
-            <LuArrowUpRight className="text-blue-600" />
+            <LuArrowUpRight className="text-blue-600 max-sm:hidden" />
           </h1>
+        </div>
+        <div className="flex items-center gap-2 text-white bg-red-600 glow-button-trailer lg:hidden px-[8px] py-[5px] rounded-3xl font-medium">
+          <p className="font-poppins">Discover</p>
+          <FaArrowRightLong />
         </div>
         <div className="max-[854px]:hidden">
           <SearchBar />
         </div>
-        {/* <div className="hidden text-[2.5rem] max-[854px]:flex">
-          <MdMenuOpen onClick={() => setToggleGenreMenu(!toggleGenreMenu)} />
-        </div> */}
       </div>
       {/* Toggle Mobile Menu for Mobile */}
       {toggleGenreMenu && (
@@ -122,6 +126,15 @@ const Trending = () => {
         <MovieList movieList={movieList} isLoading={isLoading} />
         <SwipeMovieList movieList={movieList} isLoading={isLoading} />
         <CoverFlowMovieList movieList={movieList} isLoading={isLoading} />
+      </div>
+
+      <div className="flex items-center justify-between gap-7 max-lg:hidden max-lg:pl-[3rem] pr-[2rem] py-6 w-full">
+        <div className="h-[2px] w-full bg-red-600 rounded-full"></div>
+        <div className="bg-red-600 glow-button-trailer flex items-center rounded-3xl whitespace-nowrap cursor-pointer">
+          <p className="text-white px-[8px] py-[5px] font-medium font-poppins">
+            Discover more
+          </p>
+        </div>
       </div>
     </div>
   );

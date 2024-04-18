@@ -247,14 +247,10 @@ body {
     opacity: 1;
   }
 
-  /* @media screen and (max-width: 768px) {
-    .react-select-container > .react-select__value-container {
-      display: none;
-    }
-    .react-select-container > .react-select__control {
-      font-size: 12px;
-    }
-  } */
+  .react-select-container > .react-select__control {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+  }
 }
 
 @layer utilities {

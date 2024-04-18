@@ -1,7 +1,8 @@
 "use client";
 
 import { useId } from "react";
-import Select from "react-select";
+import Select, { components, DropdownIndicatorProps } from "react-select";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { voteCount } from "../../../../../data";
 
 type prop = {
@@ -15,10 +16,19 @@ const VoteCount = ({ setSelectedVote }: prop) => {
     }
   };
 
+    const DropdownIndicator = (props: DropdownIndicatorProps) => {
+      return (
+        <components.DropdownIndicator {...props}>
+          <MdKeyboardArrowDown className="text-black text-[1.5rem]" />
+        </components.DropdownIndicator>
+      );
+    };
+
   const selectStyles = {
     control: (styles: any) => ({
       ...styles,
       border: "2px solid black",
+      borderRadius: "1.5rem",
     }),
     singleValue: (styles: any) => {
       return {
@@ -30,10 +40,17 @@ const VoteCount = ({ setSelectedVote }: prop) => {
         borderRadius: "10px",
       };
     },
+    placeholder: (styles: any) => {
+      return {
+        ...styles,
+        color: "#000",
+      }
+    }
   };
   return (
     <div>
       <Select
+        components={{ DropdownIndicator }}
         options={voteCount}
         isClearable
         placeholder="Vote count"

@@ -2,6 +2,8 @@
 
 import { useId } from "react";
 import CreatableSelect from "react-select/creatable";
+import { components, DropdownIndicatorProps } from "react-select";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { releaseYears } from "../../../../../data";
 
 type prop = {
@@ -17,10 +19,19 @@ const ReleaseYear = ({ setSelectedYear }: prop) => {
     }
   };
 
+    const DropdownIndicator = (props: DropdownIndicatorProps) => {
+      return (
+        <components.DropdownIndicator {...props}>
+          <MdKeyboardArrowDown className="text-black text-[1.5rem]" />
+        </components.DropdownIndicator>
+      );
+    };
+
   const selectStyles = {
     control: (styles: any) => ({
       ...styles,
       border: "2px solid black",
+      borderRadius: "1.5rem",
     }),
     singleValue: (styles: any) => {
       return {
@@ -32,12 +43,19 @@ const ReleaseYear = ({ setSelectedYear }: prop) => {
         borderRadius: "10px",
       };
     },
+    placeholder: (styles: any) => {
+      return {
+        ...styles,
+        color: "#000",
+      };
+    },
   };
 
   return (
     <div>
       <CreatableSelect
         isClearable
+        components={{ DropdownIndicator }}
         options={releaseYears}
         onChange={handleChange}
         placeholder="Release Year"

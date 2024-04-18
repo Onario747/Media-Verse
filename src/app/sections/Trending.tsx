@@ -94,7 +94,7 @@ const Trending = () => {
           </div>
         </div>
       )}
-      <div className="flex items-center justify-between max-[995px]:grid max-[995px]:grid-cols-1 max-lg:pl-[3rem] max-[854px]:hidden gap-y-3 p-[10px]">
+      <div className="flex items-center justify-between max-[995px]:grid max-[995px]:grid-cols-1 max-lg:pl-[3rem] max-[854px]:hidden gap-y-3 p-[10px] pl-0">
         <div className="flex items-center gap-[20px] z-20">
           <Categories
             selectedCategory={selectedCategory}

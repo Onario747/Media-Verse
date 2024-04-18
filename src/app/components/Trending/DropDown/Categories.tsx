@@ -1,8 +1,11 @@
 "use client";
 
 import { useId } from "react";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
+import Select, {
+  components,
+  DropdownIndicatorProps,
+} from "react-select";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { categoriesGenre } from "../../../../../data";
 
 type props = {
@@ -11,7 +14,6 @@ type props = {
 };
 
 const Categories = ({ setSelectedCategory }: props) => {
-  const animatedComponents = makeAnimated();
 
   const handleChange = (options: any) => {
     options.map((item: { value: any }) => {
@@ -23,11 +25,20 @@ const Categories = ({ setSelectedCategory }: props) => {
     });
   };
 
+  const DropdownIndicator = (props: DropdownIndicatorProps) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <MdKeyboardArrowDown className="text-black text-[1.5rem]" />
+      </components.DropdownIndicator>
+    );
+  };
+
   const selectStyles = {
     control: (styles: any) => ({
       ...styles,
       border: "2px solid black",
-      color: "#000"
+      borderRadius: "1.5rem",
+      color: "#000",
     }),
     multiValue: (styles: any) => {
       return {
@@ -56,12 +67,18 @@ const Categories = ({ setSelectedCategory }: props) => {
         minHeight: 20,
       };
     },
+    placeholder: (styles: any) => {
+      return {
+        ...styles,
+        color: "#000"
+      }
+    }
   };
   return (
     <div className="max-w-[400px] z-20 max-[834px]:max-w-[250px]">
       <Select
         closeMenuOnSelect={false}
-        components={animatedComponents}
+        components={{DropdownIndicator}}
         options={categoriesGenre}
         isMulti
         onChange={handleChange}

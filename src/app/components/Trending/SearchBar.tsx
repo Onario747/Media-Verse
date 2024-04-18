@@ -119,33 +119,12 @@ const SearchBar = () => {
     }
   };
 
-  // const scrollUp = () => {
-  //   if (InputSuggestionRef.current) {
-  //     window.scrollTo({
-  //       top: InputSuggestionRef.current.offsetTop,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     alert("Viewport resized")
-  //   }
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   }
-  // }, [])
-
   return (
     <div
       className="flex flex-col relative w-full max-w-96"
       ref={InputSuggestionRef}
     >
-      <div className="flex items-center justify-between max-[854px]:border-2 max-[854px]:border-black max-[854px]:rounded-xl max-[854px]:mt-3">
+      <div className="flex items-center justify-between max-[854px]:border-2 max-[854px]:border-black max-[854px]:rounded-3xl max-[854px]:mt-3">
         <div className="flex items-center gap-3 w-full">
           <IoSearchCircleSharp
             fontSize={45}

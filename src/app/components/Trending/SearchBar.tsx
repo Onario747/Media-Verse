@@ -176,7 +176,7 @@ const SearchBar = () => {
         </div>
       </div>
       <div
-        className={`max-h-[400px] overflow-y-auto absolute top-[4rem] max-[854px]:top-[3.7rem] z-10 bg-white w-full rounded drop-shadow-lg shadow-md suggestion ${
+        className={`max-h-[400px] overflow-y-auto absolute top-[4rem] max-[854px]:top-[3.7rem] z-30 bg-white w-full rounded drop-shadow-lg shadow-md suggestion ${
           showSuggestions && "suggestion-animated"
         } `}
       >

@@ -5,10 +5,17 @@ import { useEffect, useState } from "react";
 import { MovieApiResults } from "../../../types";
 import HeroSlideItem from "../components/Hero/HeroSlideItem";
 
+// type props = {
+//   isPageLoading: boolean;
+//   setIsPageLoading: (isPageLoading: boolean) => void
+// };
+
 const Hero = () => {
   const [heroMovies, setHeroMovies] = useState<MovieApiResults[]>([]);
 
+
   useEffect(() => {
+    // setIsPageLoading(true)
     const options = {
       method: "GET",
       url: "https://api.themoviedb.org/3/discover/movie",
@@ -27,6 +34,7 @@ const Hero = () => {
     };
     const fetchData = async () => {
       try {
+        // setIsPageLoading(true);
         const response = await axios.request(options);
         const modifiedResults = response.data.results.splice(
           Math.floor(Math.random()),
@@ -35,6 +43,8 @@ const Hero = () => {
         setHeroMovies(modifiedResults);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        // setIsPageLoading(false);
       }
     };
 

@@ -13,8 +13,9 @@ import SwipeMovieList from "../components/Trending/SwipeMovieList";
 
 import { LuSettings2 } from "react-icons/lu";
 import CoverFlowMovieList from "../components/Trending/CoverFlowMovieList";
+import MobileDropdown from "../components/Trending/MobileFilter.jsx";
 import SelectedDiscover from "../components/Trending/SelectedDiscover";
-import MobileDropdown from "../components/Trending/MobileDropdown";
+import MobileFilter from "../components/Trending/MobileFilter.jsx";
 
 const Trending = () => {
   const [movieList, setMovieList] = useState<MovieApiResults[]>([]);
@@ -93,7 +94,7 @@ const Trending = () => {
           </div>
         </div>
       )}
-      <div className="flex items-center justify-between max-[995px]:grid max-[995px]:grid-cols-1 max-[854px]:hidden gap-y-3 p-[10px]">
+      <div className="flex items-center justify-between max-[995px]:grid max-[995px]:grid-cols-1 max-lg:pl-[3rem] max-[854px]:hidden gap-y-3 p-[10px]">
         <div className="flex items-center gap-[20px] z-20">
           <Categories
             selectedCategory={selectedCategory}
@@ -110,10 +111,7 @@ const Trending = () => {
       <div className="hidden max-[854px]:flex flex-col gap-3 max-lg:px-[3rem] max-sm:px-[1.5rem]">
         <SearchBar />
         <div className="flex items-center justify-between flex-row-reverse">
-          <div className="flex items-center gap-2 border-2 border-black rounded-xl font-semibold font-montserrat text-white bg-blue-500 p-[6px]">
-            Filter
-            <LuSettings2 />
-          </div>
+          <MobileFilter />
           <SelectedDiscover
             setSelectedDiscover={setSelectedDiscover}
             selectedDiscover={selectedDiscover}

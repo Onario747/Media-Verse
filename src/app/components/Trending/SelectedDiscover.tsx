@@ -1,6 +1,6 @@
 type props = {
   setSelectedDiscover: (option: any) => void;
-  selectedDiscover: string
+  selectedDiscover: string;
 };
 
 const SelectedDiscover = ({ setSelectedDiscover, selectedDiscover }: props) => {
@@ -35,4 +35,4 @@ const SelectedDiscover = ({ setSelectedDiscover, selectedDiscover }: props) => {
   );
 };
 
-export default SelectedDiscover
+export default SelectedDiscover;

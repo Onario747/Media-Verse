@@ -72,27 +72,24 @@ body {
     position: relative;
     width: 100%;
     position: relative;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
-  .banner-overlay::before {
+  /* .banner-overlay::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: #00000099;
     width: 100%;
     height: 100%;
-  }
+  } */
   .banner-overlay::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px; /* Adjust height as needed */
+    height: 100px;
     -webkit-tap-highlight-color: #fff;
     background: linear-gradient(
       to top,
@@ -237,6 +234,15 @@ body {
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
   .suggestion-animated {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .filter {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .filter-animated {
     transform: translateY(0);
     opacity: 1;
   }

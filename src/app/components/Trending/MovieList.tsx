@@ -5,9 +5,7 @@ import { useState } from "react";
 import { MdArrowRightAlt } from "react-icons/md";
 import { MovieApiResults } from "../../../../types";
 import StarRatings from "../Hero/StarRatings";
-import brokenImage from "../Trending/brokenImage.png";
 import Genre from "./Genre";
-import SwipeMovieList from "./SwipeMovieList";
 
 type prop = {
   movieList: MovieApiResults[];

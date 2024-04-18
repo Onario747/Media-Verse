@@ -1,4 +1,3 @@
-
 export const categoriesGenre = [
   { value: 28, label: "Action" },
   { value: 12, label: "Adventure" },
@@ -46,8 +45,24 @@ export const TrendingMobileDropDownData = [
     id: "category",
     name: "Category",
     options: categoriesGenre.map((item) => ({
-      labelName: item.label,
-      labelId: item.value,
+      value: item.label,
+      id: item.value,
+    })),
+  },
+  {
+    id: "releaseYear",
+    name: "Release Year",
+    options: releaseYears.map((item) => ({
+      value: item.label,
+      id: item.value,
+    })),
+  },
+  {
+    id: "voteCount",
+    name: "Vote Count",
+    options: voteCount.map((item) => ({
+      value: item.label,
+      id: item.value,
     })),
   },
 ];

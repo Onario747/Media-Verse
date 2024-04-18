@@ -57,12 +57,15 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
         {heroMovies.map((poster, index) => (
           <SwiperSlide key={index}>
             {({ isActive }) => (
-              <div
-                className={`banner-overlay`}
-                style={{
-                  backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster.backdrop_path})`,
-                }}
-              >
+              <div className={`banner-overlay`}>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original/${poster.backdrop_path}`}
+                  alt={poster.title}
+                  layout="fill"
+                  priority={true}
+                  className="object-cover"
+                />
+                <div className="absolute h-full w-full bg-[#00000099]"></div>
                 <div className="w-full relative padding-x max-container py-[9rem] max-lg:pb-[4rem]">
                   <div className="flex gap-[5rem] w-full">
                     <Image

@@ -25,7 +25,7 @@ const MobileFilter = () => {
   return (
     <div className="flex flex-col items-end z-20">
       <div
-        className="flex items-center gap-2 border-2 border-black rounded-xl font-semibold font-montserrat text-white bg-blue-500 p-[6px]"
+        className="flex items-center gap-2 border-2 border-black rounded-3xl font-semibold font-montserrat text-white bg-blue-500 p-[6px]"
         onClick={toggleFilter}
       >
         Filter

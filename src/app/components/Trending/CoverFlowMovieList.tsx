@@ -45,7 +45,7 @@ const CoverFlowMovieList = ({ movieList, isLoading }: props) => {
       ? Buffer.from(str).toString("base64")
       : window.btoa(str);
   return (
-    <div className="max-md:flex mt-7 hidden">
+    <div className="max-sm:flex mt-7 hidden">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}

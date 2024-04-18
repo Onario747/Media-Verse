@@ -91,8 +91,7 @@ const MovieList = ({ movieList, isLoading }: prop) => {
                       } `}
                       alt={item.title}
                       layout="fill"
-                      objectFit="cover"
-                      className={`rounded-lg`}
+                      className={`rounded-lg object-cover`}
                     />
                   </div>
                   {isMovieCardHovered === index && (

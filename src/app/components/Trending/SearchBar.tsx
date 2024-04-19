@@ -164,15 +164,7 @@ const SearchBar = () => {
             {searchList.length > 0 && (
               <div className="flex flex-col w-full divide-y">
                 {searchList.map((suggestion, index) => {
-                  // let getImageSource = `https://image.tmdb.org/t/p/w500/${suggestion.poster_path}`;
-
-                  // switch (true) {
-                    
-                  // }
-
                   const getImageSource = () => {
-                    // let src;
-                    
                     switch (true) {
                       case !!suggestion.poster_path: {
                         return `https://image.tmdb.org/t/p/w500/${suggestion.poster_path}`

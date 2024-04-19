@@ -82,7 +82,7 @@ const Trending = () => {
             <LuArrowUpRight className="text-blue-600 max-sm:hidden" />
           </h1>
         </div>
-        <div className="flex items-center gap-2 text-white bg-red-600 glow-button-trailer lg:hidden px-[8px] py-[5px] rounded-3xl font-medium">
+        <div className="flex items-center gap-2 text-white bg-red-600 glow-button-trailer min-[855px]:hidden px-[8px] py-[5px] rounded-3xl font-medium">
           <p className="font-poppins">Discover</p>
           <FaArrowRightLong />
         </div>
@@ -128,7 +128,7 @@ const Trending = () => {
         <CoverFlowMovieList movieList={movieList} isLoading={isLoading} />
       </div>
 
-      <div className="flex items-center justify-between gap-7 max-lg:hidden max-lg:pl-[3rem] pr-[2rem] py-6 w-full">
+      <div className="flex items-center justify-between gap-7 max-[854px]:hidden max-lg:pl-[3rem] pr-[2rem] py-6 w-full">
         <div className="h-[2px] w-full bg-red-600 rounded-full"></div>
         <div className="bg-red-600 glow-button-trailer flex items-center rounded-3xl whitespace-nowrap cursor-pointer">
           <p className="text-white px-[8px] py-[5px] font-medium font-poppins">

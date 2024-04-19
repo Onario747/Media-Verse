@@ -20,5 +20,6 @@ export type SearchResults = {
   vote_average: number;
   release_date: string;
   first_air_date: string
+  profile_path: string
   media_type: string;
 };

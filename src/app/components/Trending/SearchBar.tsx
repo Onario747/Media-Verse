@@ -61,7 +61,7 @@ const SearchBar = () => {
       }
     };
 
-    if (searchTerm.trim() !== "" && searchTerm.length > 1) {
+    if (searchTerm.trim() !== "") {
       searchMovies();
       setShowSuggestions(true);
     } else {
@@ -92,7 +92,7 @@ const SearchBar = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [searchTerm]);
+  }, [searchTerm, isLoading]);
 
   const handleInputFocus = () => {
     if (inputFocusRef.current) {
@@ -131,7 +131,7 @@ const SearchBar = () => {
             color="red"
             cursor="pointer"
             onClick={handleInputFocus}
-            className="max-[834px]:text-[2.22rem]"
+            className="max-[834px]:text-[2.5rem]"
           />
           <input
             placeholder="Search by name..."
@@ -144,14 +144,17 @@ const SearchBar = () => {
             ref={inputFocusRef}
           />
         </div>
-        <div className="flex items-center gap-3 mr-2">
-          {clearInput && (
-            <IoMdClose
-              className="text-[27px] cursor-pointer text-gray-400"
-              onClick={clearInputText}
-            />
+        <div className="flex items-center gap-3 mr-3">
+          {isLoading ? (
+            <div className="loader"></div>
+          ) : (
+            clearInput && (
+              <IoMdClose
+                className="text-[27px] cursor-pointer text-gray-400 transition-all"
+                onClick={clearInputText}
+              />
+            )
           )}
-          {isLoading && <div className="loader mr-3"></div>}
         </div>
       </div>
       <div
@@ -167,18 +170,18 @@ const SearchBar = () => {
                   const getImageSource = () => {
                     switch (true) {
                       case !!suggestion.poster_path: {
-                        return `https://image.tmdb.org/t/p/w500/${suggestion.poster_path}`
+                        return `https://image.tmdb.org/t/p/w500/${suggestion.poster_path}`;
                       }
-                      
+
                       case !!suggestion.profile_path: {
                         return `https://image.tmdb.org/t/p/w500/${suggestion.profile_path}`;
                       }
-                        
+
                       default: {
-                        return "/images/logo.png"
+                        return "/images/logo.png";
                       }
                     }
-                  }
+                  };
 
                   return (
                     <div

@@ -4,9 +4,10 @@ import Navigation from "./components/Navigation/Navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Media Verse",
+  title:
+    "Media Verse | Get Latest Info about your favorite Movie's and Tv-show's",
   description:
-    "Find Organize, and keep track of your favorite movies and tv-shows collection.",
+    "Find Organize, and keep track of your favorite movies and Tv-shows collection.",
 };
 
 export default function RootLayout({

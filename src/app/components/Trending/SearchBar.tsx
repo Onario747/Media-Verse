@@ -254,7 +254,7 @@ const SearchBar = () => {
         )}
         {searchList.length === 0 && searchTerm.length > 0 && (
           <>
-            <p>No results found for your search.</p>
+            <p className="p-3 font-poppins">No results found for your search.</p>
           </>
         )}
       </div>

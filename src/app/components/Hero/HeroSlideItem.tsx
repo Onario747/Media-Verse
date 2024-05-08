@@ -1,3 +1,5 @@
+"use client";
+
 import { MovieApiResults } from "../../../../types";
 type HeroSlideProps = {
   heroMovies: MovieApiResults[];

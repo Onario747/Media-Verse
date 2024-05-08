@@ -1,6 +1,6 @@
 import axios from "axios";
-import { MovieApiResults } from "../../../../types";
-import HeroSlideItem from "../../components/Hero/HeroSlideItem";
+import { MovieApiResults } from "../../../types";
+import HeroSlideItem from "../components/Hero/HeroSlideItem";
 
 const fetchData = async () => {
   const options = {
@@ -25,16 +25,19 @@ const fetchData = async () => {
       Math.floor(Math.random()),
       7
     );
+
+    console.log("modifiedResults ", modifiedResults);
+
     return modifiedResults;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 };
 
-const Hero = async () => {
+const Page = async () => {
   const heroData = await fetchData();
   const heroMovies = heroData as MovieApiResults[];
   return <HeroSlideItem heroMovies={heroMovies} />;
 };
 
-export default Hero;
+export default Page;

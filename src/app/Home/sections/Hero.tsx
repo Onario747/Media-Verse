@@ -21,10 +21,7 @@ const fetchData = async () => {
   };
   try {
     const response = await axios.request(options);
-    const modifiedResults = response.data.results.splice(
-      Math.floor(Math.random()),
-      7
-    );
+    const modifiedResults = response.data.results
     return modifiedResults;
   } catch (error) {
     console.error("Error fetching data:", error);

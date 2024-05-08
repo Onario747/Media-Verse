@@ -174,7 +174,7 @@ const SearchBar = () => {
                       }
 
                       case !!suggestion.profile_path: {
-                        return `https://image.tmdb.org/t/p/w500/${suggestion.profile_path}`;
+                        return `https://image.tmdb.org/t/p/w500${suggestion.profile_path}`;
                       }
 
                       default: {
@@ -182,10 +182,11 @@ const SearchBar = () => {
                       }
                     }
                   };
+                  console.log(suggestion.profile_path)
 
                   return (
                     <div
-                      key={index}
+                      key={suggestion.id}
                       onMouseOver={() => suggestionHover(index)}
                       onMouseLeave={suggestionHoverOut}
                       className={`flex items-start gap-2 p-3 cursor-pointer ${

@@ -5,20 +5,20 @@ import { useEffect, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { LuArrowUpRight } from "react-icons/lu";
 
-import { MovieApiResults } from "../../../types";
-import Categories from "../components/Trending/DropDown/Categories";
-import ReleaseYear from "../components/Trending/DropDown/ReleaseYear";
-import VoteCount from "../components/Trending/DropDown/VoteCount";
-import MovieList from "../components/Trending/MovieList";
-import SearchBar from "../components/Trending/SearchBar";
-import SwipeMovieList from "../components/Trending/SwipeMovieList";
+import { MovieApiResults } from "../../../../types";
+import Categories from "../../components/Trending/DropDown/Categories";
+import ReleaseYear from "../../components/Trending/DropDown/ReleaseYear";
+import VoteCount from "../../components/Trending/DropDown/VoteCount";
+import MovieList from "../../components/Trending/MovieList";
+import SearchBar from "../../components/Trending/SearchBar";
+import SwipeMovieList from "../../components/Trending/SwipeMovieList";
 
-import CoverFlowMovieList from "../components/Trending/CoverFlowMovieList";
+import CoverFlowMovieList from "../../components/Trending/CoverFlowMovieList";
 import {
   default as MobileDropdown,
   default as MobileFilter,
-} from "../components/Trending/MobileFilter.jsx";
-import SelectedDiscover from "../components/Trending/SelectedDiscover";
+} from "../../components/Trending/MobileFilter"
+import SelectedDiscover from "../../components/Trending/SelectedDiscover";
 
 const Trending = () => {
   const [movieList, setMovieList] = useState<MovieApiResults[]>([]);

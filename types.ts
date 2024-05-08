@@ -22,4 +22,5 @@ export type SearchResults = {
   first_air_date: string
   profile_path: string
   media_type: string;
+  id: number;
 };

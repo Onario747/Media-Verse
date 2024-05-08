@@ -5,7 +5,7 @@ type props = {
   isLoading: boolean;
 };
 
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { IoSearchCircleSharp } from "react-icons/io5";
 
-import { SearchResults } from "../../../../types";
+import { SearchResults } from "../../../types";
 import StarRatings from "../Hero/StarRatings";
 
 const SearchBar = () => {

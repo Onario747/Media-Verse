@@ -1,6 +1,6 @@
+import Navigation from "@/components/Navigation/Navigation";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import Navigation from "./components/Navigation/Navigation";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
           <Navigation />
           {children}
         </main>
-          <Analytics />
+        <Analytics />
       </body>
     </html>
   );

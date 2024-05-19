@@ -27,7 +27,7 @@ const Genre = ({genreId}: props) => {
   };
 
   return (
-    <div className="bg-yellow-400 text-black font-montserrat text-[11px] font-semibold p-[2px] rounded-md">
+    <div className="bg-yellow-400 text-black font-montserrat text-[11px] max-sm:text-[0.7rem] font-semibold p-[2px] rounded-md">
       {genreMap[genreId] || "unknown"}
     </div>
   );

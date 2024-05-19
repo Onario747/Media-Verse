@@ -1,6 +1,5 @@
 "use client";
-
-import { MovieApiResults } from "../../../../types";
+import { MovieApiResults } from "../../../types";
 type HeroSlideProps = {
   heroMovies: MovieApiResults[];
 };
@@ -61,14 +60,20 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
             {({ isActive }) => (
               <div className={`banner-overlay`}>
                 <Image
-                  src={`https://image.tmdb.org/t/p/original/${poster.backdrop_path}`}
+                  src={
+                    poster.backdrop_path === null
+                      ? `https://image.tmdb.org/t/p/original/${poster.poster_path}`
+                      : `https://image.tmdb.org/t/p/original/${poster.backdrop_path}`
+                  }
                   alt={poster.title}
-                  layout="fill"
+                  fill={true}
+                  quality={100}
                   priority={true}
-                  className="object-cover"
+                  sizes="(max-width: 768px) 80vw, (max-width: 480px) 60vw, 100vw"
+                  className="object-cover object-center"
                 />
                 <div className="absolute h-full w-full bg-[#00000099]"></div>
-                <div className="w-full relative padding-x max-container py-[9rem] max-lg:pb-[4rem]">
+                <div className="w-full relative padding-x max-container py-[9rem] max-sm:pt-[6rem] max-lg:pb-[4rem]">
                   <div className="flex gap-[5rem] w-full">
                     <Image
                       priority={true}
@@ -97,7 +102,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                         </p>
                       </div>
                       <h1
-                        className={`hero-title w-full max-lg:text-[3rem] max-md:text-[2rem] m-0 leading-none ${
+                        className={`hero-title w-full max-lg:text-[3rem] max-md:text-[2rem] max-sm:text-[1.8rem] lg:line-clamp-3 max-sm:line-clamp-2 m-0 leading-none ${
                           isActive ? "text-animate" : ""
                         }`}
                       >
@@ -115,7 +120,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                         <Genre genreId={poster.genre_ids} />
                       </div>
                       <p
-                        className={`overview max-md:text-[1rem] max-sm:text-[0.7rem] font-medium
+                        className={`overview max-md:text-[1rem] max-sm:text-[0.7rem] font-semibold max-md:line-clamp-3
                         ${isActive ? "text-animate" : ""}`}
                       >
                         {poster.overview}

@@ -3,13 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import logoImage from "../../../public/images/logo.png";
 import HamburgerMenu from "./HamburgerMenu";
-import NavDropdown from "./NavDropdown";
 import NavSearch from "./NavSearch";
 
 const Navigation = () => {
-  const [isblurred, setIsBlurred] = useState(false);
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const pathname = usePathname();
   const navLinks = [
@@ -29,35 +28,24 @@ const Navigation = () => {
       className: `text-white ${pathname === "/tv-shows" ? "active-link" : ""}`,
     },
   ];
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsBlurred(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <header
-      className={`padding-x py-4 w-full fixed top-0 z-30 transition-all select-none ${
-        isblurred ? "blur-nav" : ""
-      }  ${toggleHamburger ? "bg-white p-0" : ""} `}
+      className={`padding-x py-4 w-full fixed max-sm:py-0 top-0 z-30 transition-all select-none ${
+        toggleHamburger ? "bg-white p-0" : ""
+      } `}
     >
       {/* Desktop Navigation */}
-      <nav className="hidden min-[834px]:flex items-center max-container justify-between font-montserrat">
-        <Link href="/">
-          <Image
-            src={"/images/logo.png"}
-            alt="Media-Verse logo"
-            width={80}
-            height={80}
-            className="w-[80px] h-[80px]"
-          />
-        </Link>
+      <nav className="hidden min-[834px]:flex gap-[2rem] blur-nav rounded-xl px-4 py-1-xl w-fit items-center max-container justify-evenly font-montserrat">
+        <Image
+          src={logoImage}
+          priority
+          placeholder="blur"
+          alt="Media-Verse logo"
+          width={80}
+          height={80}
+          className="object-contain"
+        />
         <div className="flex gap-[5em] font-bold ">
           {navLinks.map((link) => (
             <Link href={link.href} key={link.label} className={link.className}>
@@ -66,13 +54,12 @@ const Navigation = () => {
           ))}
         </div>
         <div className="flex items-center gap-8">
-          <NavDropdown />
           <NavSearch />
         </div>
       </nav>
       {/* Mobile Navigation */}
       <nav
-        className={`min-[834px]:hidden flex items-center max-container justify-between font-montserrat`}
+        className={`min-[834px]:hidden flex items-center max-container justify-between blur-nav px-4 py-1 rounded-bl-xl rounded-br-xl font-montserrat`}
       >
         <Link href="/">
           <Image
@@ -104,7 +91,6 @@ const Navigation = () => {
                 ))}
               </div>
               <div className="flex gap-3">
-                <NavDropdown />
                 <NavSearch />
               </div>
             </div>

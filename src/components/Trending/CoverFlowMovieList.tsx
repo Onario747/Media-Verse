@@ -1,22 +1,68 @@
-import { MovieApiResults } from "../../../../types";
+import { MovieApiResults } from "../../../types";
+import { useQuery } from "@tanstack/react-query";
 
 type props = {
-  movieList: MovieApiResults[];
-  isLoading: boolean;
+  selectedCategory: Number;
+  selectedVote: string;
+  selectedYear: string;
+  selectedDiscover: string
 };
 
-
-import "swiper/css";
+import "../../app/swiper-styles.css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../../swiper-cover-flow.css";
+import "../../app/swiper-cover-flow.css";
 
 import Image from "next/image";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 import Genre from "./Genre";
+import axios from "axios";
 
-const CoverFlowMovieList = ({ movieList, isLoading }: props) => {
+const CoverFlowMovieList = ({ selectedCategory, selectedVote, selectedYear, selectedDiscover }: props) => {
+
+    const fetchTrending = async () => {
+      const options = {
+        method: "GET",
+        url: `https://api.themoviedb.org/3/discover/${selectedDiscover}`,
+        params: {
+          include_adult: "false",
+          include_video: "false",
+          language: "en-US",
+          page: "1",
+          sort_by: "popularity.desc",
+          with_genres: selectedCategory ? selectedCategory : "",
+          year: selectedYear ? selectedYear : "",
+          first_air_date_year: selectedYear ? selectedYear : "",
+          "vote_average.lte": selectedVote ? selectedVote : "",
+        },
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2FhNjQzNTYyZDQyYTc0NTZlNTE4ZmZhMjNmZWE1ZCIsInN1YiI6IjY1ZjIwODhhOTkyNTljMDE4NjVlZjcwYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kpR4HyoUoLEcfCj2DqlIu4hK0dwSvVaEkj0F6dzw-sA",
+        },
+      };
+      try {
+        const response = await axios.request(options);
+        const modifiedResults = response.data.results.splice(
+          Math.floor(Math.random()),
+          10
+        );
+        return modifiedResults;
+      } catch (error) {
+        console.error("Error fetching Trending:", error);
+      }
+  };
+  
+  const { data: movieList, isLoading, error } = useQuery<MovieApiResults[]>({
+    queryKey: ["trending", selectedCategory, selectedDiscover, selectedVote, selectedYear],
+    queryFn: () => fetchTrending()
+  })
+
+  if (isLoading) {
+    return <div>Loading sm...</div>
+  }
+
   const extractYearFromDate = (dateString: any) => {
     if (dateString) {
       const date = new Date(dateString);
@@ -68,20 +114,10 @@ const CoverFlowMovieList = ({ movieList, isLoading }: props) => {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"
       >
-        {movieList.map((item, index) => (
+        {movieList && movieList.map((item, index) => (
           <SwiperSlide key={index}>
             {({ isActive }) => (
               <>
-                {isLoading ? (
-                  <div className="relative">
-                    <div className="animate-pulse bg-gradient-to-l from-[#cacaca] to-[#cacaca] rounded h-[310px] w-[210px]"></div>
-                    <div className=" animate-pulse absolute bottom-2 w-full ml-4 flex flex-col gap-2">
-                      <div className="bg-gradient-to-l from-[#888888] to-[#bebebe] h-2 w-[50%] rounded"></div>
-                      <div className="bg-gradient-to-l from-[#bebebe] to-[#888888] h-2 w-[70%] rounded"></div>
-                      <div className="bg-gradient-to-l from-[#bebebe] to-[#888888] h-2 w-[80%] rounded"></div>
-                    </div>
-                  </div>
-                ) : (
                   <div
                     className={`w-fit relative flex gap-9 shadow-lg shadow-blue-400 rounded-xl ${
                       isActive && "shadow-xl shadow-red-500"
@@ -96,7 +132,7 @@ const CoverFlowMovieList = ({ movieList, isLoading }: props) => {
                             : "/images/brokenImage.png"
                         } `}
                         alt={item.title}
-                        layout="fill"
+                        fill={true}
                         placeholder={`data:image/svg+xml;base64,${toBase64(
                           shimmer(210, 180)
                         )}`}
@@ -132,7 +168,6 @@ const CoverFlowMovieList = ({ movieList, isLoading }: props) => {
                       <Genre genreId={item.genre_ids[0]} />
                     </div>
                   </div>
-                )}
               </>
             )}
           </SwiperSlide>

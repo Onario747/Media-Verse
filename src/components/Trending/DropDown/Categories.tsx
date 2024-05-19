@@ -6,7 +6,7 @@ import Select, {
   DropdownIndicatorProps,
 } from "react-select";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { categoriesGenre } from "../../../../../data";
+import { categoriesGenre } from "../../../../data";
 
 type props = {
   selectedCategory: number;

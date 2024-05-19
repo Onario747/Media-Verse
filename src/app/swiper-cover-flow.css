@@ -1,6 +1,7 @@
 .swiper_container {
   height: 22.5rem;
   position: relative;
+  width: fit-content;
 }
 
 .slider-controler {
@@ -10,7 +11,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
@@ -26,14 +26,13 @@
   filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
 }
 
-
 .slider-controler .slider-arrow {
   font-size: 2rem;
   color: #222224;
 }
 
 .slider-controler .slider-arrow::after {
-  content: '';
+  content: "";
 }
 
 .swiper-pagination {

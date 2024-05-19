@@ -3,7 +3,7 @@
 import { useId } from "react";
 import Select, { components, DropdownIndicatorProps } from "react-select";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { voteCount } from "../../../../../data";
+import { voteCount } from "../../../../data";
 
 type prop = {
   setSelectedVote: (value: any) => void;

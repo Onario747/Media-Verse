@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { LuSettings2 } from "react-icons/lu";
-import { TrendingMobileDropDownData } from "../../../../data";
+import { TrendingMobileDropDownData } from "../../../data";
 
 type OptionsState = {
   [key: number]: boolean;

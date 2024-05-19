@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MovieApiResults } from "../../../../types";
-import HeroSlideItem from "../../components/Hero/HeroSlideItem";
+import HeroSlideItem from "@/components/Hero/HeroSlideItem";
 
 const fetchData = async () => {
   const options = {
@@ -11,7 +11,7 @@ const fetchData = async () => {
       include_video: "false",
       language: "en-US",
       page: "1",
-      sort_by: "popularity.desc",
+    sort_by: "popularity.desc",
     },
     headers: {
       accept: "application/json",
@@ -25,6 +25,9 @@ const fetchData = async () => {
     return modifiedResults;
   } catch (error) {
     console.error("Error fetching data:", error);
+    return (
+      <div>No Connection!!</div>
+    )
   }
 };
 

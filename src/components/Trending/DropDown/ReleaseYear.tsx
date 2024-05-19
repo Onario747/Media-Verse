@@ -4,7 +4,7 @@ import { useId } from "react";
 import CreatableSelect from "react-select/creatable";
 import { components, DropdownIndicatorProps } from "react-select";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { releaseYears } from "../../../../../data";
+import { releaseYears } from "../../../../data";
 
 type prop = {
   setSelectedYear: (value: any) => void;

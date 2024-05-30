@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { IoIosArrowDropright } from "react-icons/io";
 import { LuArrowUpRight } from "react-icons/lu";
 
 import Categories from "@/components/Trending/DropDown/Categories";
@@ -37,9 +38,9 @@ const Trending = () => {
             <LuArrowUpRight className="text-blue-600 max-sm:hidden" />
           </h1>
         </div>
-        <div className="flex items-center gap-2 text-white bg-red-600 glow-button-trailer [@media(min-width:855px)]:hidden px-[8px] py-[5px] rounded-3xl font-medium">
+        <div className="flex items-center gap-2  bg-gradient-to-r from-red-600 to-blue-500 [@media(min-width:855px)]:hidden px-[8px] py-[5px] rounded-3xl font-medium text-white">
           <p className="font-poppins">Discover</p>
-          <FaArrowRightLong />
+          <FaArrowRightLong className="border border-blue-500 bg-white text-black text-[1.5rem] p-1 rounded-full" />
         </div>
         <div className="[@media(max-width:854px)]:hidden">
           <SearchBar />
@@ -79,7 +80,7 @@ const Trending = () => {
       </QueryClientProvider>
       <div className="flex items-center justify-between gap-7 [@media(max-width:854px)]:hidden max-lg:pl-[3rem] pr-[2rem] py-6 w-full">
         <div className="h-[2px] w-full bg-red-600 rounded-full"></div>
-        <div className="bg-red-600 glow-button-trailer flex items-center rounded-3xl whitespace-nowrap cursor-pointer">
+        <div className="bg-red-600 glow-button flex items-center rounded-3xl whitespace-nowrap cursor-pointer">
           <p className="text-white px-[8px] py-[5px] font-medium font-poppins">
             Discover more
           </p>

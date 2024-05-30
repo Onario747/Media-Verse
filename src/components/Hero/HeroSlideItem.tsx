@@ -58,7 +58,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
         {heroMovies.map((poster, index) => (
           <SwiperSlide key={index}>
             {({ isActive }) => (
-              <div className={`banner-overlay duration-500`}>
+              <div className={`banner-overlay`}>
                 <Image
                   src={
                     poster.backdrop_path === null
@@ -70,7 +70,7 @@ const HeroSlideItem = ({ heroMovies }: HeroSlideProps) => {
                   quality={100}
                   // priority={true}
                   sizes="(max-width: 768px) 80vw, (max-width: 480px) 60vw, 100vw"
-                  className="object-cover object-center duration-500"
+                  className="object-cover object-center"
                 />
                 <div className="absolute h-full w-full bg-[#00000099]"></div>
                 <div className="w-full relative padding-x max-container py-[9rem] max-sm:pt-[6rem] max-lg:pb-[4rem]">

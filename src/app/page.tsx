@@ -7,10 +7,10 @@ import Trending from "./Home/sections/Trending";
 import OfflineError from "./OfflineError";
 
 export default function Home() {
-  const [offlineStatus, setOfflineStatus] = useState(true);
+  const [onlineStatus, setOnlineStatus] = useState(true);
   useEffect(() => {
     const updateOnlineStatus = () => {
-      setOfflineStatus(navigator.onLine);
+      setOnlineStatus(navigator.onLine);
     };
     updateOnlineStatus();
     window.addEventListener("online", updateOnlineStatus);
@@ -26,7 +26,7 @@ export default function Home() {
         <Hero />
       </Suspense>
       <Trending />
-      {offlineStatus ? null : <OfflineError />}
+      {!onlineStatus && <OfflineError />}
     </main>
   );
 }

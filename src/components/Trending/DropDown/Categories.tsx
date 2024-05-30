@@ -75,10 +75,10 @@ const Categories = ({ setSelectedCategory }: props) => {
     }
   };
   return (
-    <div className="max-w-[400px] z-20 max-[834px]:max-w-[250px]">
+    <div className="max-w-[400px] z-20 [@media(max-width:834px)]:max-w-[250px]">
       <Select
         closeMenuOnSelect={false}
-        components={{DropdownIndicator}}
+        components={{ DropdownIndicator }}
         options={categoriesGenre}
         isMulti
         onChange={handleChange}

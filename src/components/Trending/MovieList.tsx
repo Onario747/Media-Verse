@@ -114,7 +114,7 @@ const MovieList = ({
   };
   return (
     <div>
-      <div className="grid grid-cols-5 gap-y-4 items-center w-full mt-9 max-[1204px]:grid-cols-4 max-lg:hidden">
+      <div className="grid grid-cols-5 gap-y-4 items-center w-full mt-9 max-[1204px]:grid-cols-4 max-lg:flex max-lg:pl-[3rem] scroll-m-6 [@media(max-width:640px)]:pl-[1.5rem] [@media(max-width:995px)]:gap-4 max-sm:gap-3 overflow-x-auto max-md:snap-x max-sm:scroll-pl-[1.5rem]">
         {movieList &&
           movieList.map((item, index) => (
             <div
@@ -124,14 +124,14 @@ const MovieList = ({
                   ? ""
                   : `shadow-lg shadow-blue-400 rounded-xl cursor-pointer ${
                       isMovieCardHovered === index &&
-                      "shadow-xl shadow-red-500 transition-shadow duration-150"
+                      "shadow-xl shadow-red-500 transition-shadow duration-150 max-md:snap-start"
                     }`
               }`}
               onMouseOver={() => movieCardHover(index)}
               onMouseOut={movieCardNotHover}
             >
               <div>
-                <div className="w-[210px] h-[310px] 2xl:w-[240px] 2xl:h-[340px] rounded-lg">
+                <div className="w-[210px] h-[310px] max-sm:w-[140px] max-sm:h-[240px] max-md:w-[180px] 2xl:w-[240px] 2xl:h-[340px] rounded-lg">
                   <Image
                     priority={true}
                     placeholder={`data:image/svg+xml;base64,${toBase64(
@@ -156,25 +156,30 @@ const MovieList = ({
                 )}
               </div>
               <div className="px-3 py-2 w-full overlay absolute bottom-0 rounded-b-lg">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between w-full">
                   <StarRatings
                     rating={item.vote_average}
                     textColor="white"
                     borderColor="white"
                   />
-                  <p className="font-semibold text-blue-400 font-montserrat">
-                    {extractYearFromDate(
-                      item.release_date
-                        ? item.release_date
-                        : item.first_air_date
-                    )}
-                  </p>
+                  <div className="flex items-center justify-between max-lg:w-full">
+                    <p className="font-semibold text-blue-400 font-montserrat [@media(max-width:854px)]:text-[0.9rem]">
+                      {extractYearFromDate(
+                        item.release_date
+                          ? item.release_date
+                          : item.first_air_date
+                      )}
+                    </p>
+                    <p className="font-montserrat text-red-500 uppercase font-semibold [@media(max-width:854px)]:text-[0.9rem] lg:hidden">
+                      {item.original_language}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex items-end justify-between">
-                  <h2 className="font-poppins text-white font-bold text-[1.1rem]">
+                  <h2 className="font-poppins text-white font-bold text-[1.1rem] [@media(max-width:834px)]:text-[0.8rem]">
                     {item.title ? item.title : item.original_name}
                   </h2>
-                  <p className="font-montserrat text-red-500 uppercase font-semibold">
+                  <p className="font-montserrat text-red-500 uppercase font-semibold max-sm:text-[0.8rem] [@media(max-width:995px)]:hidden">
                     {item.original_language}
                   </p>
                 </div>

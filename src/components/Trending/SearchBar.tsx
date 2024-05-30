@@ -124,21 +124,21 @@ const SearchBar = () => {
       className="flex flex-col relative w-full max-w-96"
       ref={InputSuggestionRef}
     >
-      <div className="flex items-center justify-between max-[854px]:border-2 max-[854px]:border-black max-[854px]:rounded-3xl max-[854px]:mt-3">
+      <div className="flex items-center justify-between [@media(max-width:854px)]:border-2 [@media(max-width:854px)]:border-black [@media(max-width:854px)]:rounded-3xl [@media(max-width:854px)]:mt-3">
         <div className="flex items-center gap-3 w-full">
           <IoSearchCircleSharp
             fontSize={45}
             color="red"
             cursor="pointer"
             onClick={handleInputFocus}
-            className="max-[834px]:text-[2.5rem]"
+            className="[@media(max-width:854px)]:text-[2.5rem]"
           />
           <input
             placeholder="Search by name..."
             type="text"
             value={searchTerm}
             autoComplete="on"
-            className="border-none bg-transparent w-full focus:outline-none font-montserrat text-[1.2rem] max-[834px]:text-[1rem] font-medium"
+            className="border-none bg-transparent w-full focus:outline-none font-montserrat text-[1.2rem] [@media(max-width:854px)]:text-[1rem] font-medium"
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={showResults}
             ref={inputFocusRef}
@@ -158,7 +158,7 @@ const SearchBar = () => {
         </div>
       </div>
       <div
-        className={`max-h-[400px] overflow-y-auto absolute top-[4rem] max-[854px]:top-[3.7rem] z-30 bg-white w-full rounded drop-shadow-lg shadow-md suggestion ${
+        className={`max-h-[400px] overflow-y-auto absolute top-[4rem] [@media(max-width:854px)]:top-[3.7rem] z-30 bg-white w-full rounded drop-shadow-lg shadow-md suggestion ${
           showSuggestions && "suggestion-animated"
         } `}
       >
@@ -182,7 +182,7 @@ const SearchBar = () => {
                       }
                     }
                   };
-                  console.log(suggestion.profile_path)
+                  console.log(suggestion.profile_path);
 
                   return (
                     <div

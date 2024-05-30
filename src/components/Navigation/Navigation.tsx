@@ -31,12 +31,10 @@ const Navigation = () => {
 
   return (
     <header
-      className={`padding-x py-4 w-full fixed max-sm:py-0 top-0 z-30 transition-all select-none ${
-        toggleHamburger ? "bg-white p-0" : ""
-      } `}
+      className={`padding-x py-4 w-full fixed max-sm:py-0 top-0 z-30 transition-all select-none`}
     >
       {/* Desktop Navigation */}
-      <nav className="hidden min-[834px]:flex gap-[2rem] blur-nav rounded-xl px-4 py-1-xl w-fit items-center max-container justify-evenly font-montserrat">
+      <nav className="hidden [@media(min-width:834px)]:flex gap-[2rem] blur-nav rounded-xl px-4 py-1-xl w-fit items-center max-container justify-evenly font-montserrat">
         <Image
           src={logoImage}
           priority
@@ -59,7 +57,9 @@ const Navigation = () => {
       </nav>
       {/* Mobile Navigation */}
       <nav
-        className={`min-[834px]:hidden flex items-center max-container justify-between blur-nav px-4 py-1 rounded-bl-xl rounded-br-xl font-montserrat`}
+        className={`[@media(min-width:834px)]:hidden flex items-center max-container justify-between blur-nav px-4 py-1 ${
+          toggleHamburger ? "" : "rounded-bl-xl rounded-br-xl"
+        } font-montserrat`}
       >
         <Link href="/">
           <Image
@@ -78,7 +78,9 @@ const Navigation = () => {
         </div>
         {toggleHamburger && (
           <>
-            <div className="flex flex-col items-start gap-5 font-bold mobile-nav bg-white shadow-xl padding-x">
+            <div
+              className={`flex flex-col items-start gap-5 font-bold mobile-nav bg-white rounded-br-xl rounded-bl-xl shadow-xl padding-x`}
+            >
               <div className="flex flex-col items-start w-full">
                 {navLinks.map((link) => (
                   <Link

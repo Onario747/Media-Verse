@@ -19,7 +19,7 @@ const StarRatings = ({
     stars.push(<FaStar key={i} />);
   }
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 max-lg:hidden">
       <div className="flex text-yellow-300 gap-1">{stars}</div>
       <div
         className={`h-[18px] w-[2px] bg-${borderColor} ${

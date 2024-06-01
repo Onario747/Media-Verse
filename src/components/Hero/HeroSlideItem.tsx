@@ -130,10 +130,10 @@ const HeroSlideItem = () => {
                         )}`}
                         src={`https://image.tmdb.org/t/p/w500/${poster.poster_path}`}
                         alt="movie poster"
-                        width={350}
+                        width={400}
                         height={600}
                         quality={100}
-                        className={`poster-image max-lg:hidden z-10 ${
+                        className={`poster-image object-cover max-lg:hidden z-10 ${
                           isActive ? "scale-up" : ""
                         }`}
                       />

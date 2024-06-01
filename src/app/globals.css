@@ -164,8 +164,8 @@ body {
   }
   .poster-image {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    /* width: 400px;
-    height: 600px; */
+    width: 400px;
+    height: 600px;
     border-radius: 30px;
     transform: scale(0);
     transition: transform 0.5s ease;

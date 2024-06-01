@@ -3,7 +3,6 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import brokenImage from '/images/Broken Image Link.png'
 
 
 const HeroLoader = () => {

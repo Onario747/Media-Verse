@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { IoIosArrowDropright } from "react-icons/io";
 import { LuArrowUpRight } from "react-icons/lu";
 
 import Categories from "@/components/Trending/DropDown/Categories";
@@ -16,9 +15,9 @@ import SelectedDiscover from "@/components/Trending/SelectedDiscover";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const Trending = () => {
-  const [selectedCategory, setSelectedCategory] = useState(Number);
-  const [selectedYear, setSelectedYear] = useState("");
-  const [selectedVote, setSelectedVote] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<number[]>([]);
+ const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [selectedVote, setSelectedVote] = useState<number | null>(null);
   const [selectedDiscover, setSelectedDiscover] = useState("movie");
 
   const queryClient = new QueryClient({
@@ -52,8 +51,11 @@ const Trending = () => {
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
-          <ReleaseYear setSelectedYear={setSelectedYear} />
-          <VoteCount setSelectedVote={setSelectedVote} />
+          <ReleaseYear
+            setSelectedYear={setSelectedYear}
+            selectedYear={selectedYear}
+          />
+          <VoteCount setSelectedVote={setSelectedVote} selectedVote={selectedVote} />
         </div>
         <SelectedDiscover
           selectedDiscover={selectedDiscover}
@@ -63,7 +65,14 @@ const Trending = () => {
       <div className="hidden [@media(max-width:854px)]:flex flex-col gap-3 max-lg:px-[3rem] max-sm:px-[1.5rem]">
         <SearchBar />
         <div className="flex items-center justify-between flex-row-reverse">
-          <MobileFilter />
+          <MobileFilter
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            setSelectedYear={setSelectedYear}
+            setSelectedVote={setSelectedVote}
+            selectedYear={selectedYear}
+            selectedVote={selectedVote}
+          />
           <SelectedDiscover
             setSelectedDiscover={setSelectedDiscover}
             selectedDiscover={selectedDiscover}

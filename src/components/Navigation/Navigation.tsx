@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,22 @@ import HamburgerMenu from "./HamburgerMenu";
 import NavSearch from "./NavSearch";
 
 const Navigation = () => {
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        // staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const linkVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+  };
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const pathname = usePathname();
   const navLinks = [
@@ -78,24 +95,27 @@ const Navigation = () => {
         </div>
         {toggleHamburger && (
           <>
-            <div
+            <motion.div
+              initial="hidden"
+              animate={toggleHamburger ? "visible" : "hidden"}
+              variants={dropdownVariants}
               className={`flex flex-col items-start gap-5 font-bold mobile-nav bg-white rounded-br-xl rounded-bl-xl shadow-xl padding-x`}
             >
               <div className="flex flex-col items-start w-full">
                 {navLinks.map((link) => (
-                  <Link
-                    href={link.href}
+                  <motion.div
                     key={link.label}
+                    variants={linkVariants}
                     className="border-b border-gray-200 w-full py-2"
                   >
-                    {link.label}
-                  </Link>
+                    <Link href={link.href}>{link.label}</Link>
+                  </motion.div>
                 ))}
               </div>
               <div className="flex gap-3">
                 <NavSearch />
               </div>
-            </div>
+            </motion.div>
           </>
         )}
       </nav>

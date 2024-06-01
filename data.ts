@@ -21,23 +21,23 @@ export const categoriesGenre = [
 ];
 
 export const releaseYears = [
-  { value: "2024", label: "2024" },
-  { value: "2024", label: "2023" },
-  { value: "2024", label: "2022" },
-  { value: "2024", label: "2020" },
-  { value: "2024", label: "2021" },
-  { value: "2024", label: "2019" },
-  { value: "2024", label: "2018" },
+  { value: 2024, label: "2023" },
+  { value: 2024, label: "2024" },
+  { value: 2024, label: "2022" },
+  { value: 2024, label: "2020" },
+  { value: 2024, label: "2021" },
+  { value: 2024, label: "2019" },
+  { value: 2024, label: "2018" },
 ];
 
 export const voteCount = [
-  { value: "1/7", label: "1.0" },
-  { value: "2/7", label: "2.0" },
-  { value: "3/7", label: "3.0" },
-  { value: "4/7", label: "4.0" },
-  { value: "5/7", label: "5.0" },
-  { value: "6/6", label: "6.0" },
-  { value: "7/7", label: "7.0" },
+  { value: 1.0, label: "1.0" },
+  { value: 2.0, label: "2.0" },
+  { value: 3.0, label: "3.0" },
+  { value: 4.0, label: "4.0" },
+  { value: 5.0, label: "5.0" },
+  { value: 6.0, label: "6.0" },
+  { value: 7.0, label: "7.0" },
 ];
 
 export const TrendingMobileDropDownData = [

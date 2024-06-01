@@ -15,7 +15,6 @@ const SearchBar = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [clearInput, setClearInput] = useState(false);
   const [searchList, setSearchList] = useState<SearchResults[]>([]);
-  // const textInput = useRef<HTMLInputElement>(null);
 
   const InputSuggestionRef = useRef<HTMLDivElement>(null);
   const inputFocusRef = useRef<HTMLInputElement>(null);

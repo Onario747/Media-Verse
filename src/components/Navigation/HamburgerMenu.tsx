@@ -13,16 +13,6 @@ const HamburgerMenu = ({
     setToggleHamburger(!toggleHamburger);
   };
   return (
-    // <div
-    //   onClick={toggleMenu}
-    //   className={
-    //     toggleHamburger ? "hamburger-container-close" : "hamburger-container"
-    //   }
-    // >
-    //   <div className="bar"></div>
-    //   <div className="bar"></div>
-    //   <div className="bar"></div>
-    // </div>
     <div className="border border-white rounded-full">
       {toggleHamburger ? (
         <IoClose

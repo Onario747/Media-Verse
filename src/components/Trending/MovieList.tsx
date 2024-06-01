@@ -31,9 +31,9 @@ const toBase64 = (str: string) =>
     : window.btoa(str);
 
 type props = {
-  selectedCategory: Number;
-  selectedVote: string;
-  selectedYear: string;
+  selectedCategory: number[];
+  selectedVote: number | null;
+  selectedYear: number | null;
   selectedDiscover: string;
 };
 

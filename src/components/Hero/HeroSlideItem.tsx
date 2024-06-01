@@ -44,10 +44,7 @@ const HeroSlideItem = () => {
       return <div>No Connection!!</div>;
     }
   };
-  const {
-    data: heroMovies,
-    isLoading,
-  } = useQuery<MovieApiResults[]>({
+  const { data: heroMovies, isLoading } = useQuery<MovieApiResults[]>({
     queryKey: ["hero"],
     queryFn: () => fetchHeroData(),
   });
@@ -104,7 +101,6 @@ const HeroSlideItem = () => {
               {({ isActive }) => (
                 <div className={`banner-overlay`}>
                   <motion.div
-                    // className="absolute inset-0 z-0"
                     initial="hidden"
                     animate={isActive ? "visible" : "hidden"}
                     variants={backdropVariants}
@@ -119,7 +115,7 @@ const HeroSlideItem = () => {
                       alt={poster.title}
                       fill={true}
                       quality={100}
-                      // priority={true}
+                      priority={true}
                       sizes="(max-width: 768px) 80vw, (max-width: 480px) 60vw, 100vw"
                       className="object-cover object-center"
                     />
@@ -128,7 +124,7 @@ const HeroSlideItem = () => {
                   <div className="w-full relative padding-x max-container py-[9rem] max-sm:pt-[6rem] max-lg:pb-[4rem]">
                     <div className="flex gap-[5rem] w-full">
                       <Image
-                        // priority={true}
+                        priority={true}
                         placeholder={`data:image/svg+xml;base64,${toBase64(
                           shimmer(600, 400)
                         )}`}
@@ -136,6 +132,7 @@ const HeroSlideItem = () => {
                         alt="movie poster"
                         width={350}
                         height={600}
+                        quality={100}
                         className={`poster-image max-lg:hidden z-10 ${
                           isActive ? "scale-up" : ""
                         }`}

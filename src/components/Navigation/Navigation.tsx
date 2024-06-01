@@ -82,6 +82,7 @@ const Navigation = () => {
           <Image
             src="/images/logo.png"
             alt="Media-Verse logo"
+            priority={true}
             width={80}
             height={80}
             className="-ml-3"

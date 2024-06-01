@@ -71,7 +71,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }: Props) => {
   };
 
   return (
-    <div className="max-w-[400px] z-20 max-md:max-w-full">
+    <div className="max-w-[400px] z-20 [@media(max-width:834px)]:max-w-full">
       <Select<OptionType, true>
         closeMenuOnSelect={false}
         components={{ DropdownIndicator }}

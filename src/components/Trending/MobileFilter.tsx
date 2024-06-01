@@ -96,7 +96,7 @@ const MobileFilter = ({
         >
           {showFilters && (
             <div
-              className={`bg-white h-[23rem] overflow-y-auto w-full shadow-xl drop-shadow-md flex flex-col gap-2 items-end py-4 rounded-xl padding-x`}
+              className={`bg-white h-[23rem] overflow-y-auto w-full shadow-xl drop-shadow-md flex flex-col gap-2 items-end py-[2rem] rounded-xl padding-x`}
             >
               <div className="flex items-center justify-between w-full text-blue-500">
                 <div className="flex items-center gap-2 font-bold">

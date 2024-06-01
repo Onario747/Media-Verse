@@ -37,7 +37,7 @@ const Trending = () => {
             <LuArrowUpRight className="text-blue-600 max-sm:hidden" />
           </h1>
         </div>
-        <div className="flex items-center gap-2  bg-gradient-to-r from-red-600 to-blue-500 [@media(min-width:855px)]:hidden px-[8px] py-[5px] rounded-3xl font-medium text-white">
+        <div className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-blue-500 [@media(min-width:855px)]:hidden px-[8px] py-[5px] rounded-3xl font-medium text-white">
           <p className="font-poppins">Discover</p>
           <FaArrowRightLong className="border border-blue-500 bg-white text-black text-[1.5rem] p-1 rounded-full" />
         </div>
@@ -55,7 +55,10 @@ const Trending = () => {
             setSelectedYear={setSelectedYear}
             selectedYear={selectedYear}
           />
-          <VoteCount setSelectedVote={setSelectedVote} selectedVote={selectedVote} />
+          <VoteCount
+            setSelectedVote={setSelectedVote}
+            selectedVote={selectedVote}
+          />
         </div>
         <SelectedDiscover
           selectedDiscover={selectedDiscover}
@@ -89,10 +92,9 @@ const Trending = () => {
       </QueryClientProvider>
       <div className="flex items-center justify-between gap-7 [@media(max-width:854px)]:hidden max-lg:pl-[3rem] pr-[2rem] py-6 w-full">
         <div className="h-[2px] w-full bg-red-600 rounded-full"></div>
-        <div className="bg-red-600 glow-button flex items-center rounded-3xl whitespace-nowrap cursor-pointer">
-          <p className="text-white px-[8px] py-[5px] font-medium font-poppins">
-            Discover more
-          </p>
+        <div className="bg-red-600 flex items-center bg-gradient-to-r from-red-600 to-blue-500 rounded-3xl whitespace-nowrap cursor-pointer px-[9px] py-[5px] gap-2">
+          <p className="text-white font-medium font-poppins">Discover more</p>
+          <FaArrowRightLong className="border border-blue-500 bg-white text-black text-[1.5rem] p-1 rounded-full" />
         </div>
       </div>
     </div>
